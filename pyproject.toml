@@ -1,0 +1,36 @@
+[build-system]
+requires = ["hatchling==1.25.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "tau-openrouter-baseline"
+version = "0.1.0"
+description = "Minimal OpenRouter runner for tau-bench."
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+dependencies = [
+  "tau-bench @ git+https://github.com/sierra-research/tau-bench@59a200c6d575d595120f1cb70fea53cef0632f6b",
+  "kairos @ file:///Users/akarshgajbhiye/kairos",
+  "python-dotenv==1.0.1",
+  "openai>=1.27.0,<2",
+  "anthropic==0.26.1",
+  "google-generativeai>=0.8.0,<1",
+  "mistralai==0.4.0",
+  "opentelemetry-sdk>=1.25.0,<2",
+  "opentelemetry-exporter-otlp-proto-http>=1.25.0,<2",
+  "arize-phoenix-otel>=0.6.0",
+  "openinference-instrumentation-litellm>=0.1.24",
+  "openinference-instrumentation-openai>=0.1.0",
+  "tenacity==8.3.0",
+  "termcolor==2.4.0",
+  "numpy==1.26.4",
+]
+
+[project.scripts]
+tau-openrouter = "tau_openrouter.run:main"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["tau_openrouter"]
